@@ -4,14 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChatGPT Web Integration</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .markdown-body ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        .markdown-body ol {
+            list-style-type: decimal;
+            margin-left: 20px;
+        }
+        .markdown-body code {
+            background-color: #f1f1f1;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .markdown-body pre {
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
 </head>
-<body>
-    <div class="chat-container">
-        <h1>Chat with AI</h1>
-        <div id="chat-box"></div>
-        <textarea id="user-input" placeholder="Type your message..."></textarea>
-        <button id="send-button">Send</button>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="chat-container w-full max-w-2xl bg-white rounded-2xl shadow-xl p-6">
+        <h1 class="text-2xl font-bold text-gray-800 mb-4 text-center">Chat with AI</h1>
+        <div id="chat-box" class="h-96 overflow-y-auto mb-4 p-4 bg-gray-50 rounded-lg border border-gray-200"></div>
+        <div class="flex gap-2">
+            <textarea id="user-input" class="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none" placeholder="Type your message..."></textarea>
+            <button id="send-button" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200">Send</button>
+        </div>
+        <div id="loading" class="hidden mt-2 flex items-center justify-center">
+            <svg class="animate-spin h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span class="ml-2 text-gray-600">Generating response...</span>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
